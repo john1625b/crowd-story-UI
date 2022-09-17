@@ -1,4 +1,12 @@
-import {Container, InputContainer, Input, SubmitButtonStyles, Header, SubmitButton} from "./StoryBuilder.styles";
+import {
+    Container,
+    InputContainer,
+    Input,
+    SubmitButtonStyles,
+    Header,
+    SubmitButton,
+    LineListContainer
+} from "./StoryBuilder.styles";
 import React, {useEffect, useState} from "react";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faAngleRight, faCircleUser} from '@fortawesome/free-solid-svg-icons'
@@ -47,13 +55,13 @@ const StoryBuilder = () => {
     return (
         <Container>
             <Header>Crowd Story</Header>
-            <div>
+            <LineListContainer>
                 {
                     lineList.map(({text, user}, index) => (
                         <LineItem number={index} text={text} user={user}/>
                     ))
                 }
-            </div>
+            </LineListContainer>
             <InputContainer>
                 <FontAwesomeIcon icon={faCircleUser} style={AvatarStyles}/>
                 <Input value={inputText} onChange={e => setInputText(e.target.value)} onKeyDown={e => onEnter(e)}
