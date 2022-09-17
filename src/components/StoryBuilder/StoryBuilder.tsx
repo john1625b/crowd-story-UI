@@ -1,7 +1,8 @@
 import {Container, InputContainer, LineItem, LineList, Input, SubmitButtonStyles, Header} from "./StoryBuilder.styles";
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faCircleArrowRight} from '@fortawesome/free-solid-svg-icons'
+import axios from "axios";
 
 
 const userNameMock : string = 'John';
@@ -29,7 +30,16 @@ const StoryBuilder = () => {
             onSubmitClick();
         }
     }
-    console.log('line list', lineList)
+
+    useEffect(() => {
+        axios.get('https://reqres.in/api/users?page=2')
+            .then( (response) => {
+                console.log('response', JSON.stringify( response.data.data, null, 2))
+            })
+            .catch( (error) => {
+                console.error(error);
+            })
+    },[])
 
     return (
         <Container>
