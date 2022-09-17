@@ -7,9 +7,10 @@ const Router = () => {
     {
       path: "/",
       element: <Loading />,
+      
     },
     {
-      path: "/:storyId",
+      path: "/story/:storyId",
       element: <StoryBuilder />
     }
   ]);
