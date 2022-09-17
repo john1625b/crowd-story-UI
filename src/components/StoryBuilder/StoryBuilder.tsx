@@ -52,6 +52,9 @@ const StoryBuilder = () => {
             })
     }, [])
 
+    const placeHolderTextInitial = 'Enter your first line to begin your new story!'
+    const placeHolderTextNonInitial = 'Enter your text for the next line in the story!'
+
     return (
         <Container>
             <Header>Crowd Story</Header>
@@ -65,7 +68,7 @@ const StoryBuilder = () => {
             <InputContainer>
                 <FontAwesomeIcon icon={faCircleUser} style={AvatarStyles}/>
                 <Input value={inputText} onChange={e => setInputText(e.target.value)} onKeyDown={e => onEnter(e)}
-                       placeholder={'Enter your text for the next line in the story'}
+                       placeholder={lineList.length === 0 ? placeHolderTextInitial : placeHolderTextNonInitial}
                 />
                 <SubmitButton onClick={onSubmitClick}>
                     Post
