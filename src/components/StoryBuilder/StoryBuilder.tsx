@@ -12,6 +12,8 @@ interface Line{
     text: string
 }
 
+axios.defaults.baseURL = 'https://reqres.in'
+
 const StoryBuilder = () => {
     const [lineList, setLineList] = useState<Line[]>([]);
     const [inputText, setInputText] = useState<string>('');
@@ -32,7 +34,7 @@ const StoryBuilder = () => {
     }
 
     useEffect(() => {
-        axios.get('https://reqres.in/api/users?page=2')
+        axios.get('/api/users?page=2')
             .then( (response) => {
                 console.log('response', JSON.stringify( response.data.data, null, 2))
             })
