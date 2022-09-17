@@ -1,12 +1,13 @@
 import React, { FC } from "react";
-import StoryBuilder from "./components/StoryBuilder/StoryBuilder";
+import Router from "./components/Routing/Router";
+
 
 const App : FC = () => {
   return (
     <div>
-      <StoryBuilder/>
+      <Router />
     </div>
-  );
+  )
 }
 
 export default App;
