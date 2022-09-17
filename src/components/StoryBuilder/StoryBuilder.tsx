@@ -1,4 +1,4 @@
-import {Container, InputContainer, LineItem, LineList, Input, SubmitButtonStyles} from "./StoryBuilder.styles";
+import {Container, InputContainer, LineItem, LineList, Input, SubmitButtonStyles, Header} from "./StoryBuilder.styles";
 import React, { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faCircleArrowRight} from '@fortawesome/free-solid-svg-icons'
@@ -33,7 +33,7 @@ const StoryBuilder = () => {
 
     return (
         <Container>
-            <h3>Crowd Story</h3>
+            <Header>Crowd Story</Header>
             <LineList>
                 {
                     lineList.map(line => (

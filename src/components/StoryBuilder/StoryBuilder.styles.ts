@@ -7,6 +7,10 @@ export const Container = styled.div`
   background: white;
 `
 
+export const Header = styled.h1`
+    text-align: center;
+`
+
 export const LineList = styled.div`
     
 `
