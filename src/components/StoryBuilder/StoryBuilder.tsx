@@ -31,7 +31,7 @@ const StoryBuilder = () => {
 
     return (
         <Container>
-            Story Builder
+            <h3>Crowd Story</h3>
             <LineList>
                 {
                     lineList.map(line => (
