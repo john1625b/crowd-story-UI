@@ -1,28 +1,40 @@
 import {Container, InputContainer, LineItem, LineList} from "./StoryBuilder.styles";
 import {useState} from "react";
 
+const userNameMock = 'John';
+
 const StoryBuilder = () => {
     const [lineList, setLineList] = useState([]);
     const [inputText, setInputText] = useState('');
 
     const onSubmitClick = () => {
-        console.log('submit');
-        setLineList([...lineList, inputText]);
+        const newLine = {
+            user: userNameMock,
+            text: inputText
+        }
+        setLineList([...lineList, newLine]);
     }
 
     const onEnter = (e) => {
         if (e.key === 'Enter') {
-            setLineList([...lineList, inputText]);
+            const newLine = {
+                user: userNameMock,
+                text: inputText
+            }
+            setLineList([...lineList, newLine]);
         }
     }
-    console.log(lineList)
+    console.log('line list', lineList)
+
     return (
         <Container>
             Story Builder
             <LineList>
                 {
                     lineList.map(line => (
-                        <LineItem>{line}</LineItem>
+                        <LineItem>
+                           <bold>User: {line.user} </bold>
+                            {line.text}</LineItem>
                     ))
                 }
             </LineList>
