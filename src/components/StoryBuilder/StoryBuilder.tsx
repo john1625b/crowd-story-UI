@@ -1,7 +1,7 @@
-import {Container, InputContainer, Input, SubmitButtonStyles, Header} from "./StoryBuilder.styles";
+import {Container, InputContainer, Input, SubmitButtonStyles, Header, SubmitButton} from "./StoryBuilder.styles";
 import React, {useEffect, useState} from "react";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faCircleArrowRight} from '@fortawesome/free-solid-svg-icons'
+import {faCircleArrowRight, faAngleRight} from '@fortawesome/free-solid-svg-icons'
 import axios from "axios";
 import LineItem from "./LineItem/LineItem";
 
@@ -55,7 +55,10 @@ const StoryBuilder = () => {
             </div>
             <InputContainer>
                 <Input value={inputText} onChange={e => setInputText(e.target.value)} onKeyDown={e => onEnter(e)}/>
-                <FontAwesomeIcon icon={faCircleArrowRight} style={SubmitButtonStyles} onClick={onSubmitClick}/>
+                <SubmitButton onClick={onSubmitClick}>
+                    Post
+                    <FontAwesomeIcon icon={faAngleRight} fontVariant={'light'} style={SubmitButtonStyles}/>
+                </SubmitButton>
             </InputContainer>
         </Container>
     )
