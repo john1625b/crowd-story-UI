@@ -42,7 +42,7 @@ const StoryBuilder = () => {
                 }
             </LineList>
             <InputContainer>
-                <input onChange={e => setInputText(e.target.value)}  onKeyDown={e => onEnter(e)}/>
+                <input value={inputText} onChange={e => setInputText(e.target.value)}  onKeyDown={e => onEnter(e)}/>
                 <button onClick={onSubmitClick}>submit</button>
             </InputContainer>
         </Container>
