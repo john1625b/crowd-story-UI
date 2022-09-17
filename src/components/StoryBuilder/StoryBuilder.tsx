@@ -1,13 +1,13 @@
 import {Container, InputContainer, LineItem, LineList, Input, SubmitButtonStyles, Header} from "./StoryBuilder.styles";
 import React, {useEffect, useState} from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faCircleArrowRight} from '@fortawesome/free-solid-svg-icons'
 import axios from "axios";
 
 
-const userNameMock : string = 'John';
+const userNameMock: string = 'John';
 
-interface Line{
+interface Line {
     user: string,
     text: string
 }
@@ -25,7 +25,7 @@ const StoryBuilder = () => {
         setInputText("")
     }
 
-    const onEnter = (e : React.KeyboardEvent<HTMLInputElement>) => {
+    const onEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
             onSubmitClick();
         }
@@ -33,13 +33,13 @@ const StoryBuilder = () => {
 
     useEffect(() => {
         axios.get('/api/users?page=2')
-            .then( (response) => {
-                console.log('response', JSON.stringify( response.data.data, null, 2))
+            .then((response) => {
+                console.log('response', JSON.stringify(response.data.data, null, 2))
             })
-            .catch( (error) => {
+            .catch((error) => {
                 console.error(error);
             })
-    },[])
+    }, [])
 
     return (
         <Container>
@@ -48,13 +48,13 @@ const StoryBuilder = () => {
                 {
                     lineList.map(line => (
                         <LineItem>
-                           <strong>User: {line.user} </strong>
+                            <strong>User: {line.user} </strong>
                             {line.text}</LineItem>
                     ))
                 }
             </LineList>
             <InputContainer>
-                <Input value={inputText} onChange={e => setInputText(e.target.value)}  onKeyDown={e => onEnter(e)}/>
+                <Input value={inputText} onChange={e => setInputText(e.target.value)} onKeyDown={e => onEnter(e)}/>
                 <FontAwesomeIcon icon={faCircleArrowRight} style={SubmitButtonStyles} onClick={onSubmitClick}/>
             </InputContainer>
         </Container>
