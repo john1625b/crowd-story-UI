@@ -1,8 +1,7 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { FC } from "react";
 import StoryBuilder from "./components/StoryBuilder/StoryBuilder";
 
-function App() {
+const App : FC = () => {
   return (
     <div>
       <StoryBuilder/>
