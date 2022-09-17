@@ -12,8 +12,6 @@ interface Line{
     text: string
 }
 
-axios.defaults.baseURL = 'https://reqres.in'
-
 const StoryBuilder = () => {
     const [lineList, setLineList] = useState<Line[]>([]);
     const [inputText, setInputText] = useState<string>('');
