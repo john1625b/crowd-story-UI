@@ -1,8 +1,9 @@
-import {Container, InputContainer, LineItem, LineList, Input, SubmitButtonStyles, Header} from "./StoryBuilder.styles";
+import {Container, InputContainer, Input, SubmitButtonStyles, Header} from "./StoryBuilder.styles";
 import React, {useEffect, useState} from "react";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faCircleArrowRight} from '@fortawesome/free-solid-svg-icons'
 import axios from "axios";
+import LineItem from "./LineItem/LineItem";
 
 
 const userNameMock: string = 'John';
@@ -21,6 +22,7 @@ const StoryBuilder = () => {
             user: userNameMock,
             text: inputText
         }
+        console.log([...lineList, newLine])
         setLineList([...lineList, newLine]);
         setInputText("")
     }
@@ -44,15 +46,13 @@ const StoryBuilder = () => {
     return (
         <Container>
             <Header>Crowd Story</Header>
-            <LineList>
+            <div>
                 {
-                    lineList.map(line => (
-                        <LineItem>
-                            <strong>User: {line.user} </strong>
-                            {line.text}</LineItem>
+                    lineList.map(({text, user}, index) => (
+                        <LineItem number={index} text={text} user={user}/>
                     ))
                 }
-            </LineList>
+            </div>
             <InputContainer>
                 <Input value={inputText} onChange={e => setInputText(e.target.value)} onKeyDown={e => onEnter(e)}/>
                 <FontAwesomeIcon icon={faCircleArrowRight} style={SubmitButtonStyles} onClick={onSubmitClick}/>

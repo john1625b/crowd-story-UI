@@ -6,15 +6,6 @@ export const Container = styled.div`
 export const Header = styled.h1`
   text-align: center;
 `
-
-export const LineList = styled.div`
-
-`
-
-export const LineItem = styled.div`
-
-`
-
 export const InputContainer = styled.div`
   margin-top: 16px;
   display: flex;
