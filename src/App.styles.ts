@@ -5,4 +5,6 @@ export const MasterContainer = styled.div`
   margin-right: auto;
   max-width: 700px;
   background: white;
+  padding-left: 16px;
+  padding-right: 16px;
 `
