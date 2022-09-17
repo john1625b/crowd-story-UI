@@ -7,7 +7,7 @@ export const Header = styled.h1`
   text-align: center;
 `
 export const InputContainer = styled.div`
-  margin-top: 16px;
+  margin-top: 32px;
   display: flex;
   align-items: center;
 `

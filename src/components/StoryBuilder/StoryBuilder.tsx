@@ -1,9 +1,10 @@
 import {Container, InputContainer, Input, SubmitButtonStyles, Header, SubmitButton} from "./StoryBuilder.styles";
 import React, {useEffect, useState} from "react";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faCircleArrowRight, faAngleRight} from '@fortawesome/free-solid-svg-icons'
+import {faAngleRight, faCircleUser} from '@fortawesome/free-solid-svg-icons'
 import axios from "axios";
 import LineItem from "./LineItem/LineItem";
+import {AvatarStyles} from "./LineItem/LineItem.style";
 
 
 const userNameMock: string = 'John';
@@ -54,7 +55,10 @@ const StoryBuilder = () => {
                 }
             </div>
             <InputContainer>
-                <Input value={inputText} onChange={e => setInputText(e.target.value)} onKeyDown={e => onEnter(e)}/>
+                <FontAwesomeIcon icon={faCircleUser} style={AvatarStyles}/>
+                <Input value={inputText} onChange={e => setInputText(e.target.value)} onKeyDown={e => onEnter(e)}
+                       placeholder={'Enter your text for the next line in the story'}
+                />
                 <SubmitButton onClick={onSubmitClick}>
                     Post
                     <FontAwesomeIcon icon={faAngleRight} fontVariant={'light'} style={SubmitButtonStyles}/>
