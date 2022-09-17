@@ -6,3 +6,15 @@ export const Container = styled.div`
   width: 700px;
   background: pink;
 `
+
+export const LineList = styled.div`
+    
+`
+
+export const LineItem = styled.div`
+    
+`
+
+export const InputContainer = styled.div`
+    display: flex;
+`
