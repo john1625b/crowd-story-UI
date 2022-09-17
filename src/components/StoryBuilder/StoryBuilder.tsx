@@ -1,5 +1,8 @@
-import { Container, InputContainer, LineItem, LineList } from "./StoryBuilder.styles";
+import {Container, InputContainer, LineItem, LineList, Input, SubmitButtonStyles, Header} from "./StoryBuilder.styles";
 import React, { useState } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faCircleArrowRight} from '@fortawesome/free-solid-svg-icons'
+
 
 const userNameMock : string = 'John';
 
@@ -9,7 +12,6 @@ interface Line{
 }
 
 const StoryBuilder = () => {
-
     const [lineList, setLineList] = useState<Line[]>([]);
     const [inputText, setInputText] = useState<string>('');
 
@@ -31,7 +33,7 @@ const StoryBuilder = () => {
 
     return (
         <Container>
-            Story Builder
+            <Header>Crowd Story</Header>
             <LineList>
                 {
                     lineList.map(line => (
@@ -42,8 +44,8 @@ const StoryBuilder = () => {
                 }
             </LineList>
             <InputContainer>
-                <input value={inputText} onChange={e => setInputText(e.target.value)}  onKeyDown={e => onEnter(e)}/>
-                <button onClick={onSubmitClick}>submit</button>
+                <Input value={inputText} onChange={e => setInputText(e.target.value)}  onKeyDown={e => onEnter(e)}/>
+                <FontAwesomeIcon icon={faCircleArrowRight} style={SubmitButtonStyles} onClick={onSubmitClick}/>
             </InputContainer>
         </Container>
     )
