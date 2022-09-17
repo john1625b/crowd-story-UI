@@ -1,5 +1,8 @@
-import { Container, InputContainer, LineItem, LineList, Input } from "./StoryBuilder.styles";
+import {Container, InputContainer, LineItem, LineList, Input, SubmitButtonStyles} from "./StoryBuilder.styles";
 import React, { useState } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faCircleArrowRight} from '@fortawesome/free-solid-svg-icons'
+
 
 const userNameMock : string = 'John';
 
@@ -42,7 +45,7 @@ const StoryBuilder = () => {
             </LineList>
             <InputContainer>
                 <Input value={inputText} onChange={e => setInputText(e.target.value)}  onKeyDown={e => onEnter(e)}/>
-                <button onClick={onSubmitClick}>submit</button>
+                <FontAwesomeIcon icon={faCircleArrowRight} style={SubmitButtonStyles} onClick={onSubmitClick}/>
             </InputContainer>
         </Container>
     )
