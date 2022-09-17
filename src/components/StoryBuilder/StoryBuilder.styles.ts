@@ -18,3 +18,7 @@ export const LineItem = styled.div`
 export const InputContainer = styled.div`
     display: flex;
 `
+
+export const Input = styled.input`
+    width: 100%;
+`;

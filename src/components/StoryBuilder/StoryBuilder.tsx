@@ -1,4 +1,4 @@
-import { Container, InputContainer, LineItem, LineList } from "./StoryBuilder.styles";
+import { Container, InputContainer, LineItem, LineList, Input } from "./StoryBuilder.styles";
 import React, { useState } from "react";
 
 const userNameMock : string = 'John';
@@ -9,7 +9,6 @@ interface Line{
 }
 
 const StoryBuilder = () => {
-
     const [lineList, setLineList] = useState<Line[]>([]);
     const [inputText, setInputText] = useState<string>('');
 
@@ -42,7 +41,7 @@ const StoryBuilder = () => {
                 }
             </LineList>
             <InputContainer>
-                <input value={inputText} onChange={e => setInputText(e.target.value)}  onKeyDown={e => onEnter(e)}/>
+                <Input value={inputText} onChange={e => setInputText(e.target.value)}  onKeyDown={e => onEnter(e)}/>
                 <button onClick={onSubmitClick}>submit</button>
             </InputContainer>
         </Container>
