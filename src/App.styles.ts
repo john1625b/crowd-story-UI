@@ -8,3 +8,17 @@ export const MasterContainer = styled.div`
   padding-left: 16px;
   padding-right: 16px;
 `
+
+export const Header = styled.div`
+  background: #B19D7F;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const AppTitle = styled.h1`
+  margin: 0;
+  text-align: center;
+  color: white;
+`

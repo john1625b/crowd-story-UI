@@ -3,7 +3,6 @@ import {
     InputContainer,
     Input,
     SubmitButtonStyles,
-    Header,
     SubmitButton,
     LineListContainer
 } from "./StoryBuilder.styles";
@@ -57,7 +56,6 @@ const StoryBuilder = () => {
 
     return (
         <Container>
-            <Header>Crowd Story</Header>
             <LineListContainer>
                 {
                     lineList.map(({text, user}, index) => (

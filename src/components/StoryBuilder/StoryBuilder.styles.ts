@@ -3,10 +3,6 @@ import styled from 'styled-components';
 export const Container = styled.div`
 `
 
-export const Header = styled.h1`
-  text-align: center;
-`
-
 export const LineListContainer = styled.div`
   min-height: 128px
 `;

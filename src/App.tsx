@@ -1,6 +1,6 @@
 import React, {FC} from "react";
 
-import {MasterContainer} from "./App.styles";
+import {MasterContainer, Header, AppTitle} from "./App.styles";
 import Router from "./components/Routing/Router";
 
 
@@ -14,9 +14,14 @@ axios.defaults.baseURL = 'https://reqres.in'
 
 const App: FC = () => {
     return (
-        <MasterContainer>
-            <Router/>
-        </MasterContainer>
+        <div>
+            <Header>
+                <AppTitle>Crowd Story</AppTitle>
+            </Header>
+            <MasterContainer>
+                <Router/>
+            </MasterContainer>
+        </div>
     )
 }
 
