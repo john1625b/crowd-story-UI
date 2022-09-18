@@ -71,6 +71,17 @@ const StoryBuilder = () => {
         }
     }, [storyId])
 
+    useEffect(() => {
+        const interval = setInterval(() => {
+            axios.get(`/stories?id=${storyId}`).then(res => {
+                setLineList(res.data.payload.lines)
+            })
+            setFirstLine(false)
+            return () => clearInterval(interval);
+        }, 2000);
+        return () => clearInterval(interval);
+    }, [])
+
     return (
         <Container>
             <LineListContainer>
