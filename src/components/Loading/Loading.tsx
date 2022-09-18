@@ -10,12 +10,12 @@ const Loading = () => {
         return "urmom"
     }
 
-    const navigate = useNavigate();
-    useEffect(() => {
-        setTimeout(() => {
-            navigate(`story/${getStoryId()}`);
-        }, 3000)
-    }, [])
+  const navigate = useNavigate();
+  useEffect(() => {
+    setTimeout(() => {
+      navigate(`story/${getStoryId()}`);
+    }, 3000)
+  }, [])
 
     useEffect(() => {
         axios.post('/story/create', {
