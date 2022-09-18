@@ -1,22 +1,20 @@
-import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
-import Loading from "../Loading/Loading";
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import StoryBuilder from "../StoryBuilder/StoryBuilder";
 
 const Router = () => {
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Loading />,
-      
-    },
-    {
-      path: "/story/:storyId",
-      element: <StoryBuilder />
-    }
-  ]);
+    const router = createBrowserRouter([
+        {
+            path: "/story/",
+            element: <StoryBuilder/>,
+        },
+        {
+            path: "/story/:storyId",
+            element: <StoryBuilder/>
+        }
+    ]);
 
 
-  return <RouterProvider router={router} />
+    return <RouterProvider router={router}/>
 };
 
 export default Router;

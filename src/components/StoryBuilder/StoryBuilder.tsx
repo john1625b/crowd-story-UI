@@ -12,6 +12,7 @@ import {faAngleRight, faCircleUser} from '@fortawesome/free-solid-svg-icons'
 import axios from "axios";
 import LineItem from "./LineItem/LineItem";
 import {AvatarStyles} from "./LineItem/LineItem.style";
+import {useNavigate, useParams} from "react-router-dom";
 
 
 const userNameMock: string = 'John';
@@ -24,14 +25,34 @@ interface Line {
 const StoryBuilder = () => {
     const [lineList, setLineList] = useState<Line[]>([]);
     const [inputText, setInputText] = useState<string>('');
+    const [firstLine, setFirstLine] = useState<boolean>(true);
+    const {storyId} = useParams<{ storyId?: string }>();
 
+    const navigate = useNavigate();
     const onSubmitClick = () => {
+        if (inputText === '') return;
+
         const newLine = {
             user: userNameMock,
             text: inputText
         }
-        console.log([...lineList, newLine])
-        setLineList([...lineList, newLine]);
+        if (firstLine) {
+            axios.post('/story/create', {
+                userName: 'user1',
+                lineContent: inputText
+            }).then(res => {
+                navigate(`/story/${res.data.payload._id}`);
+            })
+            setLineList([...lineList, newLine]);
+            setFirstLine(false)
+        } else {
+            axios.post('/story/add-line', {
+                userName: 'user1',
+                storyId: storyId,
+                lineContent: inputText,
+            })
+        }
+
         setInputText("")
     }
 
@@ -40,16 +61,6 @@ const StoryBuilder = () => {
             onSubmitClick();
         }
     }
-
-    useEffect(() => {
-        axios.get('/api/users?page=2')
-            .then((response) => {
-                console.log('response', JSON.stringify(response.data.data, null, 2))
-            })
-            .catch((error) => {
-                console.error(error);
-            })
-    }, [])
 
     const placeHolderTextInitial = 'Enter your first line to begin your new story!'
     const placeHolderTextNonInitial = 'Enter your text for the next line in the story!'

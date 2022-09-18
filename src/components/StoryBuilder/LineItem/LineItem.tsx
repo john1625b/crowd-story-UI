@@ -13,7 +13,7 @@ const LineItem = ({number, text, user}: ILineItemProps) => {
     return (
         <LineItemContainer>
             <LineItemNumber>
-                {number}
+                {number + 1}
             </LineItemNumber>
             <FontAwesomeIcon icon={faCircleUser} style={AvatarStyles}/>
             <TextContainer>

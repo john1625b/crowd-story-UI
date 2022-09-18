@@ -1,5 +1,6 @@
 import React, {useEffect} from "react";
 import {useNavigate} from "react-router-dom";
+import axios from "axios";
 
 
 const Loading = () => {
@@ -14,6 +15,13 @@ const Loading = () => {
         setTimeout(() => {
             navigate(`story/${getStoryId()}`);
         }, 3000)
+    }, [])
+
+    useEffect(() => {
+        axios.post('/story/create', {
+            userName: 'user1',
+            lineContent: ''
+        })
     }, [])
 
     return (
