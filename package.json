@@ -2,6 +2,7 @@
   "name": "crowd-story",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://damp-woodland-51512.herokuapp.com/",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.0",
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
@@ -15,6 +16,7 @@
     "@types/react-dom": "^18.0.6",
     "@types/styled-components": "^5.1.26",
     "axios": "^0.27.2",
+    "color-hash": "^2.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.0",

@@ -15,6 +15,7 @@ export const Header = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 32px;
 `;
 
 export const AppTitle = styled.h1`

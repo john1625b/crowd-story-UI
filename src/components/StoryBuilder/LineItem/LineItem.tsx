@@ -1,23 +1,24 @@
-import {AvatarStyles, TextContainer, LineItemContainer, LineItemNumber} from "./LineItem.style";
+import {AvatarStyles, TextContainer, LineItemContainer, LineItemNumber, UserNameContainer} from "./LineItem.style";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCircleUser} from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 
 interface ILineItemProps {
     number: number;
-    text: string;
-    user: string;
+    content: string;
+    userName: string;
 }
 
-const LineItem = ({number, text, user}: ILineItemProps) => {
+const LineItem = ({number, content, userName}: ILineItemProps) => {
     return (
         <LineItemContainer>
             <LineItemNumber>
-                {number}
+                {number + 1}
             </LineItemNumber>
-            <FontAwesomeIcon icon={faCircleUser} style={AvatarStyles}/>
+            <FontAwesomeIcon icon={faCircleUser} style={AvatarStyles(userName)}/>
+            <UserNameContainer>{userName}: </UserNameContainer>
             <TextContainer>
-                {text}
+                {content}
             </TextContainer>
         </LineItemContainer>
     )

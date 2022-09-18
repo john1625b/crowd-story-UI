@@ -12,26 +12,47 @@ import {faAngleRight, faCircleUser} from '@fortawesome/free-solid-svg-icons'
 import axios from "axios";
 import LineItem from "./LineItem/LineItem";
 import {AvatarStyles} from "./LineItem/LineItem.style";
+import {useNavigate, useParams} from "react-router-dom";
 
+const placeHolderTextInitial = 'Enter your first line to begin your new story!'
+const placeHolderTextNonInitial = 'Enter your text for the next line in the story!'
 
-const userNameMock: string = 'John';
+const userNameMock: string = 'user1';
 
 interface Line {
-    user: string,
-    text: string
+    userName: string,
+    content: string
 }
 
 const StoryBuilder = () => {
     const [lineList, setLineList] = useState<Line[]>([]);
     const [inputText, setInputText] = useState<string>('');
+    const [firstLine, setFirstLine] = useState<boolean>(true);
+    const {storyId} = useParams<{ storyId?: string }>();
 
+    const navigate = useNavigate();
     const onSubmitClick = () => {
-        const newLine = {
-            user: userNameMock,
-            text: inputText
+        if (inputText === '') return;
+
+        if (firstLine) {
+            axios.post('/story/create', {
+                userName: userNameMock,
+                lineContent: inputText
+            }).then(res => {
+                navigate(`/story/${res.data.payload._id}`);
+                setLineList(res.data.payload.lines);
+            })
+            setFirstLine(false)
+        } else {
+            axios.post('/story/add-line', {
+                userName: userNameMock,
+                storyId: storyId,
+                lineContent: inputText,
+            }).then(res => {
+                setLineList(res.data.payload.lines);
+            })
         }
-        console.log([...lineList, newLine])
-        setLineList([...lineList, newLine]);
+
         setInputText("")
     }
 
@@ -42,29 +63,25 @@ const StoryBuilder = () => {
     }
 
     useEffect(() => {
-        axios.get('/api/users?page=2')
-            .then((response) => {
-                console.log('response', JSON.stringify(response.data.data, null, 2))
+        if (storyId) {
+            axios.get(`/stories?id=${storyId}`).then(res => {
+                setLineList(res.data.payload.lines)
             })
-            .catch((error) => {
-                console.error(error);
-            })
-    }, [])
-
-    const placeHolderTextInitial = 'Enter your first line to begin your new story!'
-    const placeHolderTextNonInitial = 'Enter your text for the next line in the story!'
+            setFirstLine(false)
+        }
+    }, [storyId])
 
     return (
         <Container>
             <LineListContainer>
                 {
-                    lineList.map(({text, user}, index) => (
-                        <LineItem number={index} text={text} user={user}/>
+                    lineList.map(({content, userName}, index) => (
+                        <LineItem key={index} number={index} content={content} userName={userName}/>
                     ))
                 }
             </LineListContainer>
             <InputContainer>
-                <FontAwesomeIcon icon={faCircleUser} style={AvatarStyles}/>
+                <FontAwesomeIcon icon={faCircleUser} style={AvatarStyles(userNameMock)}/>
                 <Input value={inputText} onChange={e => setInputText(e.target.value)} onKeyDown={e => onEnter(e)}
                        placeholder={lineList.length === 0 ? placeHolderTextInitial : placeHolderTextNonInitial}
                 />
