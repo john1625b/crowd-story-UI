@@ -20,7 +20,7 @@ const placeHolderTextNonInitial = 'Enter your text for the next line in the stor
 const userNameMock: string = 'user1';
 
 interface Line {
-    user: string,
+    userName: string,
     content: string
 }
 
@@ -75,13 +75,13 @@ const StoryBuilder = () => {
         <Container>
             <LineListContainer>
                 {
-                    lineList.map(({content, user}, index) => (
-                        <LineItem key={index} number={index} content={content} user={user}/>
+                    lineList.map(({content, userName}, index) => (
+                        <LineItem key={index} number={index} content={content} userName={userName}/>
                     ))
                 }
             </LineListContainer>
             <InputContainer>
-                <FontAwesomeIcon icon={faCircleUser} style={AvatarStyles}/>
+                <FontAwesomeIcon icon={faCircleUser} style={AvatarStyles(userNameMock)}/>
                 <Input value={inputText} onChange={e => setInputText(e.target.value)} onKeyDown={e => onEnter(e)}
                        placeholder={lineList.length === 0 ? placeHolderTextInitial : placeHolderTextNonInitial}
                 />
