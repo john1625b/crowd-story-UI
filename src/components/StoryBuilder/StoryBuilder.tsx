@@ -14,12 +14,14 @@ import LineItem from "./LineItem/LineItem";
 import {AvatarStyles} from "./LineItem/LineItem.style";
 import {useNavigate, useParams} from "react-router-dom";
 
+const placeHolderTextInitial = 'Enter your first line to begin your new story!'
+const placeHolderTextNonInitial = 'Enter your text for the next line in the story!'
 
-const userNameMock: string = 'John';
+const userNameMock: string = 'user1';
 
 interface Line {
     user: string,
-    text: string
+    content: string
 }
 
 const StoryBuilder = () => {
@@ -32,24 +34,22 @@ const StoryBuilder = () => {
     const onSubmitClick = () => {
         if (inputText === '') return;
 
-        const newLine = {
-            user: userNameMock,
-            text: inputText
-        }
         if (firstLine) {
             axios.post('/story/create', {
-                userName: 'user1',
+                userName: userNameMock,
                 lineContent: inputText
             }).then(res => {
                 navigate(`/story/${res.data.payload._id}`);
+                setLineList(res.data.payload.lines);
             })
-            setLineList([...lineList, newLine]);
             setFirstLine(false)
         } else {
             axios.post('/story/add-line', {
-                userName: 'user1',
+                userName: userNameMock,
                 storyId: storyId,
                 lineContent: inputText,
+            }).then(res => {
+                setLineList(res.data.payload.lines);
             })
         }
 
@@ -62,15 +62,16 @@ const StoryBuilder = () => {
         }
     }
 
-    const placeHolderTextInitial = 'Enter your first line to begin your new story!'
-    const placeHolderTextNonInitial = 'Enter your text for the next line in the story!'
+    useEffect(() => {
+        axios.get
+    }, [])
 
     return (
         <Container>
             <LineListContainer>
                 {
-                    lineList.map(({text, user}, index) => (
-                        <LineItem number={index} text={text} user={user}/>
+                    lineList.map(({content, user}, index) => (
+                        <LineItem key={index} number={index} content={content} user={user}/>
                     ))
                 }
             </LineListContainer>

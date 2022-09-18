@@ -5,11 +5,11 @@ import React from "react";
 
 interface ILineItemProps {
     number: number;
-    text: string;
+    content: string;
     user: string;
 }
 
-const LineItem = ({number, text, user}: ILineItemProps) => {
+const LineItem = ({number, content, user}: ILineItemProps) => {
     return (
         <LineItemContainer>
             <LineItemNumber>
@@ -17,7 +17,7 @@ const LineItem = ({number, text, user}: ILineItemProps) => {
             </LineItemNumber>
             <FontAwesomeIcon icon={faCircleUser} style={AvatarStyles}/>
             <TextContainer>
-                {text}
+                {content}
             </TextContainer>
         </LineItemContainer>
     )
