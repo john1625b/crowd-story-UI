@@ -23,6 +23,7 @@ export const Input = styled.input`
 `;
 
 export const SubmitButton = styled.div`
+  color: white;
   width: 172px;
   background: #B19D7F;
   height: 60px;
@@ -35,7 +36,7 @@ export const SubmitButton = styled.div`
 `;
 
 export const SubmitButtonStyles = {
-    color: 'black',
+    color: 'white',
     height: '22x',
     width: '32px',
     cursor: 'pointer',
