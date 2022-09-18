@@ -63,8 +63,13 @@ const StoryBuilder = () => {
     }
 
     useEffect(() => {
-        axios.get
-    }, [])
+        if (storyId) {
+            axios.get(`/stories?id=${storyId}`).then(res => {
+                setLineList(res.data.payload.lines)
+            })
+            setFirstLine(false)
+        }
+    }, [storyId])
 
     return (
         <Container>
