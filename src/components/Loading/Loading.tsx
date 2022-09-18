@@ -12,7 +12,7 @@ const Loading = () => {
   const navigate = useNavigate();
   useEffect(() => {
     setTimeout(() => {
-      navigate(`/${getStory()}`);
+      navigate(`/story/${getStory()}`);
     }, 3000)
   }, [])
 
